@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
+    <title>Ramondrole - Шахматы</title>
+    <link rel="icon" href="./Ramondrole.webp">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="chess.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chess.js/0.10.3/chess.min.js"></script>
+</head>
+<body>
+    <nav>
+        <div class="logo">RAMONDROLE</div>
+        <div class="nav-links">
+            <a href="https://ramondrole.github.io/Pogreb_Ramondrole-About_me/" data-key="about">Обо мне</a>
+            <a href="https://ramondrole.github.io/Pogreb_Ramondrole-Games/" data-key="games">Наши игры</a>
+            <a href="https://ramondrole.github.io/Pogreb_Ramondrole-Userful_functions/" data-key="functions">Полезные функции</a>
+        </div>
+        <div class="language-switcher">
+            <button class="lang-btn" id="langBtn">🌐 RU</button>
+            <ul class="lang-dropdown">
+                <li><a href="#" data-lang="ru">🇷🇺 Русский</a></li>
+                <li><a href="#" data-lang="en">🇺🇸 English</a></li>
+                <li><a href="#" data-lang="de">🇩🇪 Deutsch</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="chess-wrapper">
+        <div class="mode-selector">
+            <button id="modeFriend" class="active" data-key="friendMode">ДРУГ</button>
+            <button id="modeBot" data-key="botMode">БОТ</button>
+        </div>
+        
+        <div class="board-container">
+            <div id="chessboard" class="chessboard"></div>
+        </div>
+        
+        <div class="status">
+            <span id="turnIndicator" data-key="whiteTurn">Ход белых</span>
+            <span id="gameOverMsg"></span>
+        </div>
+        
+        <div class="color-legend">
+            <span class="blue" data-key="blueLegend">Синие</span> <span data-key="blueDesc">— белые (ходят первыми)</span> &nbsp;&nbsp;|&nbsp;&nbsp;
+            <span class="purple" data-key="purpleLegend">Фиолетовые</span> <span data-key="purpleDesc">— чёрные</span>
+        </div>
+        
+        <button id="newGameBtn" data-key="newGameBtn">НОВАЯ ИГРА</button>
+    </div>
+
+    <script src="chess.js"></script>
+</body>
+</html>

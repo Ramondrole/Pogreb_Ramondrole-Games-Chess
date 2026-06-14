@@ -1,0 +1,193 @@
+.chess-wrapper {
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    background: rgba(10, 5, 20, 0.8);
+    backdrop-filter: blur(4px);
+    border: 2px solid #00ffff;
+    box-shadow: 0 0 30px #00ffff, inset 0 0 20px #ff00ff40;
+    border-radius: 24px;
+    padding: 24px 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.mode-selector {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.mode-selector button {
+    background: transparent;
+    border: 2px solid #00ffff;
+    color: #00ffff;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 8px 25px;
+    border-radius: 40px;
+    cursor: pointer;
+    box-shadow: 0 0 10px #00ffff;
+    transition: 0.2s;
+    text-transform: uppercase;
+    font-family: 'Courier New', monospace;
+}
+
+.mode-selector button.active {
+    background: #00ffff;
+    color: #0a0a0a;
+    box-shadow: 0 0 25px #00ffff;
+}
+
+.mode-selector button:not(.active):hover {
+    background: #00ffff20;
+}
+
+.board-container {
+    display: flex;
+    justify-content: center;
+}
+
+.chessboard {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    width: min(70vmin, 560px);
+    height: min(70vmin, 560px);
+    border: 4px solid #00ffff;
+    box-shadow: 0 0 40px #00ffff, 0 0 20px #ff00ff inset;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.square {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: min(6vmin, 42px);
+    font-weight: 500;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.1s;
+    position: relative;
+}
+
+.square.light {
+    background: #1e0b3c;
+    background-image: linear-gradient(145deg, #2a0f4a, #12052a);
+}
+
+.square.dark {
+    background: #0b001c;
+    background-image: linear-gradient(145deg, #15082e, #020008);
+}
+
+.white-piece {
+    color: #00aaff;
+    text-shadow: 0 0 12px #00aaff, 0 0 25px #00ffff;
+}
+
+.black-piece {
+    color: #aa44ff;
+    text-shadow: 0 0 12px #aa44ff, 0 0 25px #ff00ff;
+}
+
+.square.selected {
+    box-shadow: inset 0 0 0 4px #ffff00, 0 0 20px yellow;
+    z-index: 3;
+}
+
+.square.possible-move::after {
+    content: '';
+    position: absolute;
+    width: 25%;
+    height: 25%;
+    background: #ffffffb0;
+    border-radius: 50%;
+    box-shadow: 0 0 20px white, 0 0 30px cyan;
+    z-index: 2;
+    pointer-events: none;
+}
+
+.square.possible-move.has-piece::after {
+    width: 18%;
+    height: 18%;
+    background: #ffaa00;
+    box-shadow: 0 0 25px orange;
+}
+
+.status {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    background: #00000060;
+    border: 1px solid cyan;
+    border-radius: 50px;
+    color: cyan;
+    text-shadow: 0 0 8px cyan;
+    letter-spacing: 2px;
+    flex-wrap: wrap;
+}
+
+#gameOverMsg {
+    color: #ff66ff;
+    text-shadow: 0 0 8px magenta;
+}
+
+.color-legend {
+    text-align: center;
+    font-size: 0.95rem;
+    padding: 8px;
+    background: #0a0515;
+    border: 1px solid #ff00ff;
+    border-radius: 40px;
+    color: #ccccff;
+    text-shadow: 0 0 5px magenta;
+}
+
+.color-legend span.blue {
+    color: #00aaff;
+    font-weight: bold;
+    text-shadow: 0 0 8px #00aaff;
+}
+
+.color-legend span.purple {
+    color: #aa44ff;
+    font-weight: bold;
+    text-shadow: 0 0 8px #aa44ff;
+}
+
+#newGameBtn {
+    background: transparent;
+    border: 3px solid #ff00ff;
+    color: #ff00ff;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 12px 20px;
+    border-radius: 60px;
+    cursor: pointer;
+    box-shadow: 0 0 30px #ff00ff;
+    transition: 0.2s;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+    font-family: 'Courier New', monospace;
+}
+
+#newGameBtn:hover {
+    background: #ff00ff;
+    color: black;
+    box-shadow: 0 0 60px #ff00ff;
+}
+
+@media (max-width: 500px) {
+    .chess-wrapper { padding: 15px; }
+    .mode-selector button { font-size: 0.9rem; padding: 6px 18px; }
+    .status { font-size: 0.9rem; }
+    .color-legend { font-size: 0.8rem; }
+    #newGameBtn { font-size: 1rem; padding: 10px 15px; letter-spacing: 3px; }
+}
